@@ -1,0 +1,189 @@
+:root {
+    --bg-color: #f9fafb;     /* Very light gray for page background to make white calc pop */
+    --calc-bg: #ffffff;      /* Pure white for calculator */
+    --text-main: #111827;    /* Dark gray / black for numbers */
+    --text-display: #000000; /* Pure black for output */
+    --text-prev: #6b7280;    /* Gray for previous operand */
+    
+    --btn-bg: #f3f4f6;       /* Light gray buttons */
+    --btn-hover: #e5e7eb;
+    --btn-active: #d1d5db;
+    
+    --op-bg: #f97316;        /* Orange for operators */
+    --op-hover: #ea580c;
+    --op-text: #ffffff;
+    
+    --equals-bg: #111827;    /* Black for equals button */
+    --equals-hover: #374151;
+    --equals-text: #ffffff;
+    
+    --action-bg: #e5e7eb;    /* Slightly darker gray for C and Delete */
+    --action-hover: #d1d5db;
+    
+    --shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+body {
+    background: var(--bg-color);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+.calculator {
+    width: 360px;
+    background: var(--calc-bg);
+    border-radius: 24px;
+    box-shadow: var(--shadow);
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    border: 1px solid #e5e7eb;
+}
+
+.display {
+    text-align: right;
+    min-height: 120px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    word-break: break-all;
+    padding: 10px 10px 0 10px;
+}
+
+.previous-operand {
+    font-size: 18px;
+    color: var(--text-prev);
+    min-height: 24px;
+    margin-bottom: 4px;
+    font-weight: 500;
+}
+
+.current-operand {
+    font-size: 56px;
+    font-weight: 600;
+    color: var(--text-display);
+    line-height: 1.1;
+    letter-spacing: -1px;
+}
+
+.keypad {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    background: var(--btn-bg);
+    color: var(--text-main);
+    font-size: 24px;
+    font-weight: 500;
+    height: 68px;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    user-select: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.02);
+}
+
+.btn:hover {
+    background: var(--btn-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.btn:active {
+    background: var(--btn-active);
+    transform: translateY(1px);
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+
+.btn-operator {
+    background: var(--op-bg);
+    color: var(--op-text);
+    font-size: 28px;
+}
+
+.btn-operator:hover {
+    background: var(--op-hover);
+    box-shadow: 0 6px 16px rgba(249, 115, 22, 0.3);
+}
+
+.btn-operator:active {
+    box-shadow: 0 2px 8px rgba(249, 115, 22, 0.3);
+}
+
+.btn-action {
+    background: var(--action-bg);
+    color: var(--text-main);
+    font-size: 20px;
+}
+
+.btn-action:hover {
+    background: var(--action-hover);
+}
+
+.btn-equals {
+    background: var(--equals-bg);
+    color: var(--equals-text);
+}
+
+.btn-equals:hover {
+    background: var(--equals-hover);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.btn-equals:active {
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+}
+
+#btn-clear {
+    grid-column: span 2;
+    color: #ef4444; /* Give Clear button a distinct red tint for danger action */
+    font-weight: 600;
+}
+
+.btn-zero {
+    grid-column: span 2;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 480px) {
+    body {
+        background: var(--calc-bg);
+        align-items: flex-end;
+    }
+
+    .calculator {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 32px 32px 0 0;
+        box-shadow: none;
+        border: none;
+        padding: 30px 20px 40px 20px;
+        gap: 20px;
+    }
+
+    .display {
+        min-height: 20vh;
+    }
+
+    .btn {
+        height: 72px;
+        border-radius: 20px;
+    }
+}
